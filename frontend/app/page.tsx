@@ -68,6 +68,7 @@ export default function Home() {
         <InfocardSection
           items={infoHome}
           className="grid grid-cols-1 md:grid-cols-3 gap-2"
+          cardClassName="bg-transparent border-none shadow-none"
         />
       </div>
     </main>
