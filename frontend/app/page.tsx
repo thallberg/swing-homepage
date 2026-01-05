@@ -14,6 +14,8 @@ import { InfocardSection } from "@/components/sections/info-card/info.card";
 import { Calendar } from "@/components/ui/calendar";
 
 import { useState } from "react";
+import { Card, CardContent } from "@/components/ui/card";
+import { CalendarCard } from "@/components/sections/calendar-card/calendarcard";
 
 export default function Home() {
   const [date, setDate] = useState<Date | undefined>(new Date());
@@ -53,22 +55,20 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="flex w-full flex-col gap-4 pt-4 pb-4 md:flex-row">
-          {/* Calendar */}
-          <div className="flex w-full justify-center md:w-1/2">
-            <Calendar
-              mode="single"
-              selected={date}
-              onSelect={setDate}
-              className="max-w-sm rounded-2xl border"
-            />
+        <div className="grid grid-cols-1 gap-4 pt-4 pb-4 lg:grid-cols-2">
+          <div className="flex justify-center">
+            <CalendarCard date={date} onSelect={setDate} />
           </div>
 
-          {/* Day events */}
-          <div className="flex w-full justify-center md:w-1/2">
-            <DayEventsPanel date={date} events={mockBookings} />
+          <div className="flex justify-center">
+            <div className="w-full flex lg:h-1/2">
+              <DayEventsPanel date={date} events={mockBookings} />
+            </div>
           </div>
         </div>
+
+
+
 
         <div className="w-full flex-col bg-blue/10 p-4 rounded-lg">
           <InfocardSection

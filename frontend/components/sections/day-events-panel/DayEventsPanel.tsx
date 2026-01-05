@@ -23,7 +23,7 @@ function DayEventsPanel({ date, events }: DayEventsPanelProps) {
     : [];
 
   return (
-    <Card className="w-full">
+    <Card className="w-full shadow-none">
       <CardHeader>
         <CardTitle>
           {date

@@ -17,6 +17,9 @@ const navLinks = [
 function Navbar() {
   const pathname = usePathname();
   const [scrolled, setScrolled] = React.useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = React.useState(false);
+
+  const isSolid = scrolled || mobileMenuOpen;
 
   React.useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 10);
@@ -28,9 +31,8 @@ function Navbar() {
 
   return (
     <nav
-      className={`fixed top-0 z-50 w-full transition-all duration-500 ${
-        scrolled ? "bg-gray-800/99 shadow-md py-0" : "bg-transparent py-2"
-      }`}
+      className={`fixed top-0 z-50 w-full transition-all duration-500 ${isSolid ? "bg-gray-800/99 shadow-md py-0" : "bg-transparent py-2"
+        }`}
     >
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4">
         {/* Logo */}
@@ -45,7 +47,10 @@ function Navbar() {
         <DesktopNav links={navLinks} />
 
         {/* Mobile */}
-        <MobileMenu links={navLinks} />
+        <MobileMenu 
+        links={navLinks} 
+        open={mobileMenuOpen}
+        onOpenChange={setMobileMenuOpen} />
       </div>
     </nav>
   );

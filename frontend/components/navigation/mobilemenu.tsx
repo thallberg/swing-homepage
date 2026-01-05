@@ -13,25 +13,35 @@ import {
   DrawerTrigger,
 } from "@/components/ui/drawer";
 import { usePathname } from "next/navigation";
-import { Separator } from "../ui/separator";
 
 type LinkItem = {
   href: string;
   label: string;
 };
 
-function MobileMenu({ links }: { links: LinkItem[] }) {
+type MobileMenuProps = {
+  links: LinkItem[];
+  open: boolean;
+  onOpenChange: (open: boolean) => void;
+}
+
+function MobileMenu({ links, open, onOpenChange }: MobileMenuProps) {
   const pathname = usePathname();
   return (
     <div className="lg:hidden">
-      <Drawer direction="right" modal={false}>
+      <Drawer
+        direction="right"
+        modal={false}
+        open={open}
+        onOpenChange={onOpenChange}
+      >
         <DrawerTrigger asChild>
-          <Button variant="ghost" size="icon">
+          <Button variant="ghost" size="icon" className="hover:bg-transparent dark:hover:bg-transparent">
             <Menu className="size-6 text-white" />
           </Button>
         </DrawerTrigger>
 
-        <DrawerContent className="ml-auto mt-16 h-[calc(100dvh-4rem)] bg-gray-800/99 text-white border-none rounded-none p-6">
+        <DrawerContent className="ml-auto mt-16 h-[calc(100dvh-4rem)] bg-gray-800/99 text-white border-none rounded-none p-6 w-screen">
           <VisuallyHidden>
             <DrawerTitle>Huvudmeny</DrawerTitle>
           </VisuallyHidden>
