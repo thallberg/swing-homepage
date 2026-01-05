@@ -1,15 +1,15 @@
 "use client";
 
-import { homeHero } from "@/components/layout/data/hero.content";
+import { homeHero } from "@/app/data/content/hero-content/hero.content";
 import { Hero } from "@/components/layout/hero";
-import { mockBookings } from "@/components/sections/day-events-panel/data/event-content";
+import { mockBookings } from "@/app/data/content/dayevent-content/event-content";
 import { DayEventsPanel } from "@/components/sections/day-events-panel/DayEventsPanel";
-import { homeImageCard } from "@/components/sections/image-card/data/image-content";
+import { homeImageCard } from "@/app/data/content/imagecard-content/image-content";
 import { ImageCardSection } from "@/components/sections/image-card/image.card";
 import {
   infoHome,
   serviceHome,
-} from "@/components/sections/info-card/data/card.content";
+} from "@/app/data/content/infocard-content/card.content";
 import { InfocardSection } from "@/components/sections/info-card/info.card";
 import { Calendar } from "@/components/ui/calendar";
 

@@ -1,6 +1,7 @@
 "use client";
 
-import { Facebook, Instagram, Linkedin, type LucideIcon } from "lucide-react";
+import { socialLinks } from "@/app/data/content/sociallinks-content/sociallinks.data";
+import { LucideIcon } from "lucide-react";
 import Link from "next/link";
 
 export type SocialLinkItem = {
@@ -9,26 +10,7 @@ export type SocialLinkItem = {
   icon: LucideIcon;
   hoverClass: string;
 };
-const socialLinks: SocialLinkItem[] = [
-  {
-    href: "https://www.facebook.com",
-    label: "Facebook",
-    icon: Facebook,
-    hoverClass: "hover:text-blue-400",
-  },
-  {
-    href: "https://www.instagram.com",
-    label: "Instagram",
-    icon: Instagram,
-    hoverClass: "hover:text-orange-400",
-  },
-  {
-    href: "https://www.linkedin.com",
-    label: "LinkedIn",
-    icon: Linkedin,
-    hoverClass: "hover:text-blue-400",
-  },
-];
+
 
 function SocialLinks() {
   return (

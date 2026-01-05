@@ -1,28 +1,7 @@
 "use client";
 
-import { MapPin, Mail, Phone } from "lucide-react";
+import { contactInfoItems } from "@/app/data/content/contact-content/contact.data";
 
-import type { LucideIcon } from "lucide-react";
-
-export type ContactInfoItem = {
-  icon: LucideIcon;
-  label: string;
-};
-
-export const contactInfoItems: ContactInfoItem[] = [
-  {
-    icon: MapPin,
-    label: "123 Hästvägen, 456 78",
-  },
-  {
-    icon: Mail,
-    label: "kontakt@exempel.se",
-  },
-  {
-    icon: Phone,
-    label: "070-123 45 67",
-  },
-];
 
 function ContactInfo() {
   return (

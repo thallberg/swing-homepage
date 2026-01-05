@@ -20,6 +20,7 @@ export type CardItem = {
   title: string;
   body: string;
   icon?: LucideIcon;
+  iconClassName?: string;
 };
 
 /* =========================

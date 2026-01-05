@@ -2,7 +2,7 @@
 
 
 import person1 from "@/public/about/person1.webp";
-import { PersonItem } from "../personsection";
+import { PersonItem } from "../../../../components/sections/person-section.tsx/personsection";
 
 export const personCardContent: PersonItem[] = [
   {

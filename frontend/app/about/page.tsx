@@ -1,13 +1,13 @@
-import { aboutHero } from "@/components/layout/data/hero.content";
+import { aboutHero } from "@/app/data/content/hero-content/hero.content";
 import { Hero } from "@/components/layout/hero";
-import { homeImageCard } from "@/components/sections/image-card/data/image-content";
+import { homeImageCard } from "@/app/data/content/imagecard-content/image-content";
 import { ImageCardSection } from "@/components/sections/image-card/image.card";
 import {
   infoAbout,
   infoAboutTeam,
-} from "@/components/sections/info-card/data/card.content";
+} from "@/app/data/content/infocard-content/card.content";
 import { InfocardSection } from "@/components/sections/info-card/info.card";
-import { personCardContent } from "@/components/sections/person-section.tsx/data/person.data";
+import { personCardContent } from "@/app/data/content/person-content/person.data";
 import { PersonCardSection } from "@/components/sections/person-section.tsx/personsection";
 
 export default function AboutPage() {

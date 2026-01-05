@@ -19,7 +19,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 
 import { InfocardSection } from "../info-card/info.card";
-import { contactSuccessInfo } from "./data/contact-success.data";
+import { contactSuccessInfo } from "../../../app/data/content/success-content/contact-success.data";
 
 /* =========================
    ZOD SCHEMA

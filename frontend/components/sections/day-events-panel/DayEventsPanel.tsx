@@ -1,7 +1,7 @@
 "use client";
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { BookingEvent } from "./data/event-content";
+import { BookingEvent } from "../../../app/data/content/dayevent-content/event-content";
 import { Separator } from "@/components/ui/separator";
 import { Badge } from "@/components/ui/badge";
 

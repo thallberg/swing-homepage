@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { Card, CardContent } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
-import type { ServiceItem } from "./data/service.card.content";
+import type { ServiceItem } from "../../../app/data/content/service-content/service.card.content";
 
 /* ----------------------------------
    Internal ServiceCard

@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { ChevronDown } from "lucide-react";
 import { cn } from "@/lib/utils";
-import type { HeroItem } from "./data/hero.content";
+import type { HeroItem } from "../../app/data/content/hero-content/hero.content";
 import * as React from "react";
 
 type HeroProps = {

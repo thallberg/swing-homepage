@@ -2,7 +2,7 @@
 
 import { Card, CardContent } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
-import { ImageCardItem } from "./data/image-content";
+import { ImageCardItem } from "../../../app/data/content/imagecard-content/image-content";
 
 
 type ImageCardSectionProps = {

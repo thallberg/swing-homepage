@@ -1,6 +1,6 @@
 "use client";
 
-import { contactHero } from "@/components/layout/data/hero.content";
+import { contactHero } from "@/app/data/content/hero-content/hero.content";
 import { Hero } from "@/components/layout/hero";
 import { ContactForm } from "@/components/sections/contact-form/contact.form";
 
