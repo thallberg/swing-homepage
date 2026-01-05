@@ -25,7 +25,7 @@ export default function AboutPage() {
         </div>
 
         <div className="w-full lg:w-1/2 flex">
-          <ImageCardSection item={homeImageCard} className="flex-1" />
+         <ImageCardSection item={homeImageCard} className="flex-1 max-w-[90vw] m-auto" />
         </div>
       </div>
 

@@ -1,7 +1,8 @@
 
 
-import { PersonItem } from "@/components/card/personcard";
+
 import person1 from "@/public/about/person1.webp";
+import { PersonItem } from "../personsection";
 
 export const personCardContent: PersonItem[] = [
   {
