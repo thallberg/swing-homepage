@@ -11,9 +11,9 @@ export default function RootLayout({
   return (
     <html lang="sv" suppressHydrationWarning>
       <body className="min-h-screen bg-background text-foreground antialiased">
-        <Navbar/>
+        <Navbar />
         {children}
-        <Footer/>
+        <Footer />
       </body>
     </html>
   )
