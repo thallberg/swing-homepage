@@ -4,11 +4,16 @@ import Link from "next/link";
 import { Menu } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
+import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
 import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "@/components/ui/popover";
+  Drawer,
+  DrawerClose,
+  DrawerContent,
+  DrawerTitle,
+  DrawerTrigger,
+} from "@/components/ui/drawer";
+import { usePathname } from "next/navigation";
+import { Separator } from "../ui/separator";
 
 type LinkItem = {
   href: string;
@@ -16,39 +21,35 @@ type LinkItem = {
 };
 
 function MobileMenu({ links }: { links: LinkItem[] }) {
+  const pathname = usePathname();
   return (
     <div className="lg:hidden">
-      <Popover>
-        <PopoverTrigger asChild>
+      <Drawer direction="right" modal={false}>
+        <DrawerTrigger asChild>
           <Button variant="ghost" size="icon">
             <Menu className="size-6 text-white" />
           </Button>
-        </PopoverTrigger>
+        </DrawerTrigger>
 
-        <PopoverContent
-          animation={"slideRight"}
-          align="start"
-          side="bottom"
-          sideOffset={14}
-          className="
-  w-[60vw]
-  h-[95vh]
-  p-6
-  bg-amber-700
-  text-white
-  border-none
-  rounded-none
-"
-        >
-          <nav className="flex flex-col gap-4">
+        <DrawerContent className="ml-auto mt-16 h-[calc(100dvh-4rem)] bg-gray-800/99 text-white border-none rounded-none p-6">
+          <VisuallyHidden>
+            <DrawerTitle>Huvudmeny</DrawerTitle>
+          </VisuallyHidden>
+          <nav className="flex flex-col gap-6 items-center">
+            {pathname !== "/" && (
+              <DrawerClose asChild>
+                <Link href="/">Hem</Link>
+              </DrawerClose>
+            )}
+
             {links.map((link) => (
-              <Link key={link.href} href={link.href}>
-                {link.label}
-              </Link>
+              <DrawerClose asChild key={link.href}>
+                <Link href={link.href}>{link.label}</Link>
+              </DrawerClose>
             ))}
           </nav>
-        </PopoverContent>
-      </Popover>
+        </DrawerContent>
+      </Drawer>
     </div>
   );
 }

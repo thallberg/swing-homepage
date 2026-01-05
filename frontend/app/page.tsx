@@ -30,7 +30,10 @@ export default function Home() {
         </div>
 
         <div className="w-full lg:w-1/2 flex">
-          <ImageCardSection item={homeImageCard} className="flex-1" />
+          <ImageCardSection
+            item={homeImageCard}
+            className="flex-1 max-w-[90vw] m-auto"
+          />
         </div>
       </div>
 
@@ -43,7 +46,10 @@ export default function Home() {
         </div>
 
         <div className="w-full lg:w-1/2 flex lg:order-first">
-          <ImageCardSection item={homeImageCard} className="flex-1" />
+          <ImageCardSection
+            item={homeImageCard}
+            className="flex-1 max-w-[90vw] m-auto"
+          />
         </div>
       </div>
 

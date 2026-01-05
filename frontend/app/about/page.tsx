@@ -19,12 +19,13 @@ export default function AboutPage() {
         <div className="w-full lg:w-1/2 flex bg-blue/10 p-4 rounded-lg items-center">
           <InfocardSection
             items={infoAbout}
-            cardClassName="border-0 shadow-none bg-transparent"
+            cardClassName="border-0 shadow-none bg-transparent max-w-[90vw] md:max-w-[80vw] lg:max-w-[70vw]"
+            className="m-auto"
           />
         </div>
 
         <div className="w-full lg:w-1/2 flex">
-          <ImageCardSection item={homeImageCard} className="flex-1" />
+         <ImageCardSection item={homeImageCard} className="flex-1 max-w-[90vw] m-auto" />
         </div>
       </div>
 
@@ -32,7 +33,8 @@ export default function AboutPage() {
         <div className="w-full lg:w-1/2 flex p-4 bg-blue/10 rounded-lg items-center">
           <InfocardSection
             items={infoAboutTeam}
-            cardClassName="border-0 shadow-none bg-transparent"
+            cardClassName="border-0 shadow-none bg-transparent max-w-[90vw] md:max-w-[80vw] lg:max-w-[70vw]"
+            className="m-auto"
           />
         </div>
 

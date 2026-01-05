@@ -29,7 +29,7 @@ function Navbar() {
   return (
     <nav
       className={`fixed top-0 z-50 w-full transition-all duration-500 ${
-        scrolled ? "bg-amber-600/95 shadow-md py-0" : "bg-transparent py-2"
+        scrolled ? "bg-gray-800/99 shadow-md py-0" : "bg-transparent py-2"
       }`}
     >
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4">
