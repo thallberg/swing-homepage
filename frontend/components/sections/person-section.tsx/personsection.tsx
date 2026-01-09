@@ -33,7 +33,7 @@ function PersonCard({
         <Image
           src={image}
           alt={alt}
-          className={cn("w-full object-cover", imageClassName)}
+          className={cn("object-cover", imageClassName)}
           priority={false}
         />
       </CardHeader>
@@ -63,9 +63,9 @@ function PersonCardSection({
   return (
     <section className={className}>
       <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
-        {items.map((person) => (
+        {items.map((person, index) => (
           <PersonCard
-            key={person.name}
+          key={`${person.name}-${index}`}
             {...person}
             className={cardClassName}
             imageClassName={imageClassName}

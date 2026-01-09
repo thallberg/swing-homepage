@@ -32,9 +32,9 @@ function ImageCardSection({ item, className }: ImageCardSectionProps) {
 
       {/* Content */}
       <CardContent className="relative z-10 flex h-full items-center justify-center text-center px-4 py-24">
-        <h1 className="text-4xl md:text-6xl font-bold text-amber-100">
+        <h2 className="text-4xl md:text-6xl font-bold text-amber-100">
           {item.title}
-        </h1>
+        </h2>
       </CardContent>
     </Card>
   );

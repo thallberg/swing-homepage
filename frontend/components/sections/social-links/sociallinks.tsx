@@ -3,6 +3,7 @@
 import { socialLinks } from "@/app/data/content/sociallinks-content/sociallinks.data";
 import { LucideIcon } from "lucide-react";
 import Link from "next/link";
+import { cn } from "@/lib/utils";
 
 export type SocialLinkItem = {
   href: string;
@@ -21,11 +22,12 @@ function SocialLinks() {
 
           return (
             <Link
-              key={item.label}
+              key={item.href}
               href={item.href}
               target="_blank"
+              rel="noopener noreferrer"
               aria-label={item.label}
-              className={`text-amber-100 transition ${item.hoverClass}`}
+              className={cn("text-amber-100 transition", item.hoverClass)}
             >
               <Icon className="size-6" />
             </Link>

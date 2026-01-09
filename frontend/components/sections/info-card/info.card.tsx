@@ -1,21 +1,26 @@
 "use client";
 
 import { CardItem } from "@/app/data/content/infocard-content/card.content";
-
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import type { LucideIcon } from "lucide-react";
 import { cn } from "@/lib/utils";
 
+/* ----------------------------------
+   Internal Infocard
+----------------------------------- */
 
-type InfocardProps = {
-  icon?: LucideIcon;
-  title: string;
-  body: string;
-  className?: string; // 👈 NEW
+type InfocardProps = CardItem & {
+  className?: string;
   iconClassName?: string;
 };
 
-function Infocard({ icon: Icon, title, body, className, iconClassName }: InfocardProps) {
+function Infocard({
+  icon: Icon,
+  title,
+  body,
+  className,
+  iconClassName,
+}: InfocardProps) {
   return (
     <Card
       className={cn(
@@ -30,6 +35,7 @@ function Infocard({ icon: Icon, title, body, className, iconClassName }: Infocar
               "size-14",
               iconClassName ?? "text-amber-300"
             )}
+            aria-hidden="true"
           />
         )}
         <CardTitle className="text-xl text-amber-900">{title}</CardTitle>
@@ -42,31 +48,34 @@ function Infocard({ icon: Icon, title, body, className, iconClassName }: Infocar
   );
 }
 
+/* ----------------------------------
+   InfocardSection (PUBLIC)
+----------------------------------- */
 
 type InfocardSectionProps = {
   items: CardItem[];
-  className?: string;        // wrapper
-  cardClassName?: string;    // 👈 NEW
+  className?: string; // wrapper
+  cardClassName?: string; // per card
+  iconClassName?: string; // per icon (optional override)
 };
 
 function InfocardSection({
   items,
   className,
   cardClassName,
+  iconClassName,
 }: InfocardSectionProps) {
   return (
-    <div className={className}>
-      {items.map((item) => (
+    <section className={className}>
+      {items.map((item, index) => (
         <Infocard
-          key={item.title}
-          icon={item.icon}
-          title={item.title}
-          body={item.body}
-          className={cardClassName} // 👈 pass down
-          iconClassName={item.iconClassName}
+          key={`${item.title}-${index}`}
+          {...item}
+          className={cardClassName}
+          iconClassName={iconClassName ?? item.iconClassName}
         />
       ))}
-    </div>
+    </section>
   );
 }
 
