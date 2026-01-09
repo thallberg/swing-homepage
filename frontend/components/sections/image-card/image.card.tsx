@@ -14,7 +14,7 @@ function ImageCardSection({ item, className }: ImageCardSectionProps) {
   return (
     <Card
       className={cn(
-        "relative h-full min-h-[500px] overflow-hidden lg:rounded-2xl",
+        "relative h-full min-h-[500px] overflow-hidden lg:rounded-sm",
         className
       )}
     >

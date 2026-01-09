@@ -10,14 +10,14 @@ type CalendarCardProps = {
 
 function CalendarCard({ date, onSelect }: CalendarCardProps) {
   return (
-    <Card className="w-full bg-blue/5 shadow-none border-none">
+    <Card className="w-full bg-blue/5 shadow-sm border-none">
       <CardContent className="flex justify-center">
         <Calendar
           mode="single"
           selected={date}
           onSelect={onSelect}
           weekStartsOn={1}
-          className="rounded-2xl border w-2/3 shadow-none! border-none p-4"
+          className="rounded-sm border w-2/3 shadow-none! border-none p-4"
         />
       </CardContent>
     </Card>

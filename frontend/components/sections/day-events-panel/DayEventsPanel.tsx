@@ -57,7 +57,7 @@ function DayEventsPanel({ date, events }: DayEventsPanelProps) {
               <div key={event.id}>
                 <Link
                   href={`/events/${event.id}`}
-                  className="group flex items-center justify-between rounded-md py-2 hover:bg-blue/5 transition focus:outline-none focus-visible:ring-2 focus-visible:ring-blue"
+                  className="group flex items-center justify-between rounded-sm py-2 hover:bg-blue/5 transition focus:outline-none focus-visible:ring-2 focus-visible:ring-blue"
                 >
                   <p className="font-medium">{event.title}</p>
 
@@ -84,7 +84,7 @@ function DayEventsPanel({ date, events }: DayEventsPanelProps) {
               <div key={event.id}>
                 <Link
                   href={`/events/${event.id}`}
-                  className="group flex items-center justify-between rounded-md py-2 hover:bg-blue/5 transition focus:outline-none focus-visible:ring-2 focus-visible:ring-blue"
+                  className="group flex items-center justify-between rounded-sm py-2 hover:bg-blue/5 transition focus:outline-none focus-visible:ring-2 focus-visible:ring-blue"
                 >
                   <p className="text-sm">
                     {event.title}

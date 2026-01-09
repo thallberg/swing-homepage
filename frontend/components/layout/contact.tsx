@@ -11,7 +11,7 @@ function Contact() {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 items-stretch">
         {/* ===== CONTACT ===== */}
         <div className="flex">
-          <Card className="flex-1 rounded-2xl p-8 text-center">
+          <Card className="flex-1 rounded-sm p-8 text-center">
             <h2 className="mb-2 text-3xl font-semibold text-foreground">
               Kontakta oss
             </h2>

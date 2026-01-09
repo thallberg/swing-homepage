@@ -30,7 +30,7 @@ function ServiceCard({
         width={600}
         height={400}
         className={cn(
-          "w-full rounded-lg object-cover lg:rounded-2xl",
+          "w-full rounded-sm object-cover lg:rounded-sm",
           imageClassName
         )}
       />
