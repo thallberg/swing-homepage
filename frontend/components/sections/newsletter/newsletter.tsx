@@ -18,7 +18,7 @@ function Newsletter() {
         <Input
           type="email"
           placeholder="Din e-postadress"
-          className="bg-background"
+          className="bg-background text-foreground"
         />
 
         <Button variant='orange'>
