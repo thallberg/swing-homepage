@@ -18,7 +18,6 @@ export default function Home() {
     <main className="relative">
       <Hero item={bookingHero} />
       <div className="max-w-[96vw] m-auto">
-
         <div className="flex flex-col lg:flex-row items-stretch gap-4 pt-4 pb-4">
           <div className="w-full lg:w-1/2 flex p-4 bg-blue/10 rounded-lg items-center">
             <InfocardSection
@@ -36,17 +35,12 @@ export default function Home() {
             />
           </div>
         </div>
-        <div className="w-full flex-col bg-blue/10 p-4 rounded-lg">
-          <InfocardSection
-            items={infoBookingStats}
-            className="grid grid-cols-1 max-w-[70vw]  md:grid-cols-2 md:max-w-[80vw] lg:grid-cols-4 lg:max-w-[100vw] gap-2 m-auto"
-            cardClassName="bg-transparent border-none shadow-none"
-          />
-        </div>
-
         <div className="flex flex-col lg:flex-row items-stretch gap-4 pt-4 pb-4">
           <div className="w-full lg:w-1/2 flex">
-            <ImageCardSection item={homeImageCard} className="flex-1 max-w-[90vw] m-auto" />
+            <ImageCardSection
+              item={homeImageCard}
+              className="flex-1 max-w-[90vw] m-auto"
+            />
           </div>
           <div className="w-full lg:w-1/2 flex bg-blue/10 p-4 rounded-lg lg:order-first">
             <InfocardSection
@@ -54,6 +48,14 @@ export default function Home() {
               className="flex-1 grid grid-cols-1 md:grid-cols-3 lg:grid-cols-1 gap-2"
             />
           </div>
+        </div>
+
+        <div className="w-full flex-col bg-blue/10 p-4 rounded-lg">
+          <InfocardSection
+            items={infoBookingStats}
+            className="grid grid-cols-1 max-w-[70vw]  md:grid-cols-2 md:max-w-[80vw] lg:grid-cols-4 lg:max-w-[100vw] gap-2 m-auto"
+            cardClassName="bg-transparent border-none shadow-none"
+          />
         </div>
       </div>
     </main>

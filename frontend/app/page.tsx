@@ -61,7 +61,7 @@ export default function Home() {
           </div>
 
           <div className="flex justify-center">
-            <div className="w-full flex lg:h-1/2">
+            <div className="w-full flex">
               <DayEventsPanel date={date} events={mockBookings} />
             </div>
           </div>
