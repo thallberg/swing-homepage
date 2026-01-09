@@ -4,7 +4,7 @@ import * as React from "react";
 import { z } from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-
+import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import {
   Form,
@@ -20,6 +20,10 @@ import { Textarea } from "@/components/ui/textarea";
 
 import { InfocardSection } from "../info-card/info.card";
 import { contactSuccessInfo } from "../../../app/data/content/success-content/contact-success.data";
+
+type ContactFormProps = {
+  className?: string;
+};
 
 /* =========================
    ZOD SCHEMA
@@ -46,7 +50,7 @@ type ContactFormValues = z.infer<typeof contactFormSchema>;
 /* =========================
    COMPONENT
 ========================= */
-export function ContactForm() {
+export function ContactForm({ className }: ContactFormProps) {
   const [submitted, setSubmitted] = React.useState(false);
 
   const form = useForm<ContactFormValues>({
@@ -71,11 +75,13 @@ export function ContactForm() {
   ========================= */
   if (submitted) {
     return (
-      <InfocardSection
-        items={contactSuccessInfo}
-        cardClassName="border-0 shadow-none bg-transparent max-w-[90vw] md:max-w-[80vw] lg:max-w-[70vw]"
-        className="m-auto"
-      />
+      <div className={cn("w-full", className)}>
+        <InfocardSection
+          items={contactSuccessInfo}
+          cardClassName="border-0 shadow-none bg-transparent max-w-[90vw] md:max-w-[80vw] lg:max-w-[70vw]"
+          className="m-auto"
+        />
+      </div>
     );
   }
 
@@ -84,7 +90,10 @@ export function ContactForm() {
   ========================= */
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+      <form
+        onSubmit={form.handleSubmit(onSubmit)}
+        className={cn("space-y-6", className)}
+      >
         {/* Namn */}
         <FormField
           control={form.control}
@@ -108,11 +117,7 @@ export function ContactForm() {
             <FormItem>
               <FormLabel>E-post</FormLabel>
               <FormControl>
-                <Input
-                  type="email"
-                  placeholder="din@email.se"
-                  {...field}
-                />
+                <Input type="email" placeholder="din@email.se" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>

@@ -33,7 +33,7 @@ function Calendar({
     <DayPicker
       showOutsideDays={showOutsideDays}
       className={cn(
-        "bg-background group/calendar p-3 [--cell-size:--spacing(8)] [[data-slot=card-content]_&]:bg-transparent [[data-slot=popover-content]_&]:bg-transparent",
+        "bg-background group/calendar [--cell-size:--spacing(8)] [[data-slot=card-content]_&]:bg-background [[data-slot=popover-content]_&]:bg-background",
         String.raw`rtl:**:[.rdp-button\_next>svg]:rotate-180`,
         String.raw`rtl:**:[.rdp-button\_previous>svg]:rotate-180`,
         className
@@ -89,12 +89,12 @@ function Calendar({
           defaultClassNames.caption_label
         ),
         table: "w-full border-collapse",
-        weekdays: cn("flex", defaultClassNames.weekdays),
+        weekdays: cn("flex mb-2 border-b border-amber-600", defaultClassNames.weekdays),
         weekday: cn(
-          "text-muted-foreground rounded-md flex-1 font-normal text-[0.8rem] select-none",
+          "text-muted-foreground rounded-md mb-1 flex-1 font-normal text-[0.8rem] select-none",
           defaultClassNames.weekday
         ),
-        week: cn("flex w-full mt-2", defaultClassNames.week),
+        week: cn("flex w-full my-0", defaultClassNames.week),
         week_number_header: cn(
           "select-none w-(--cell-size)",
           defaultClassNames.week_number_header
@@ -104,7 +104,7 @@ function Calendar({
           defaultClassNames.week_number
         ),
         day: cn(
-          "relative w-full h-full p-0 text-center [&:last-child[data-selected=true]_button]:rounded-r-md group/day aspect-square select-none",
+          "relative w-full h-full p-0.5 text-center [&:last-child[data-selected=true]_button]:rounded-r-md group/day aspect-square select-none",
           props.showWeekNumber
             ? "[&:nth-child(2)[data-selected=true]_button]:rounded-l-md"
             : "[&:first-child[data-selected=true]_button]:rounded-l-md",
@@ -117,7 +117,7 @@ function Calendar({
         range_middle: cn("rounded-none", defaultClassNames.range_middle),
         range_end: cn("rounded-r-md bg-accent", defaultClassNames.range_end),
         today: cn(
-          "border border-blue text-accent-foreground rounded-md data-[selected=true]:border-transparent data-[selected=true]:rounded-none",
+          "text-accent-foreground rounded-md data-[selected=true]:border-transparent data-[selected=true]:rounded-none",
           defaultClassNames.today
         ),
         outside: cn(
@@ -145,14 +145,14 @@ function Calendar({
         Chevron: ({ className, orientation, ...props }) => {
           if (orientation === "left") {
             return (
-              <ChevronLeftIcon className={cn("size-4", className)} {...props} />
+              <ChevronLeftIcon className={cn("size-6", className)} {...props} />
             );
           }
 
           if (orientation === "right") {
             return (
               <ChevronRightIcon
-                className={cn("size-4", className)}
+                className={cn("size-6", className)}
                 {...props}
               />
             );
@@ -198,6 +198,7 @@ function CalendarDayButton({
       variant="calendar"
       size="icon"
       data-day={day.date.toISOString().slice(0, 10)}
+      data-today={modifiers.today ? "true" : undefined}
       data-selected-single={
         modifiers.selected &&
         !modifiers.range_start &&
@@ -209,7 +210,8 @@ function CalendarDayButton({
       data-range-middle={modifiers.range_middle}
       className={cn(
         `
-        data-[selected-single=true]:bg-blue
+        data-[today=true]:border data-[today=true]:border-amber-600 data-[today=true]:rounded-md
+        data-[selected-single=true]:bg-amber-600
         data-[selected-single=true]:text-primary-foreground 
         data-[range-middle=true]:bg-accent 
         data-[range-middle=true]:text-accent-foreground 
