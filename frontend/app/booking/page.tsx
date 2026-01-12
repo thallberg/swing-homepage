@@ -12,6 +12,8 @@ import {
 import { InfocardSection } from "@/components/sections/info-card/info.card";
 import { personCardContent } from "@/app/data/content/person-content/person.data";
 import { PersonCardSection } from "@/components/sections/person-section.tsx/personsection";
+import { ServiceCardSection } from "@/components/sections/service-card/service.card";
+import { serviceCardContent } from "../data/content/service-content/service.card.content";
 
 export default function Home() {
   return (
@@ -55,6 +57,19 @@ export default function Home() {
             items={infoBookingStats}
             className="grid grid-cols-1 max-w-[70vw]  md:grid-cols-2 md:max-w-[80vw] lg:grid-cols-4 lg:max-w-[100vw] gap-2 m-auto"
             cardClassName="bg-transparent border-none shadow-none"
+          />
+        </div>
+        <div className="w-full lg:order-first p-4">
+          <ServiceCardSection
+            items={serviceCardContent}
+            className="flex-1 max-w-[90vw] m-auto"
+          />
+        </div>
+        <div className="w-full min-h-[30vh] flex p-4 bg-blue/10 rounded-md items-center">
+          <InfocardSection
+            items={infoBooking}
+            cardClassName="border-0 shadow-none bg-transparent max-w-[80vw] md:max-w-[70vw] lg:max-w-[60vw]"
+            className="m-auto"
           />
         </div>
       </div>

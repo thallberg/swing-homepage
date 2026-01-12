@@ -136,6 +136,7 @@ export function ContactForm({ className }: ContactFormProps) {
                   placeholder="Skriv ditt meddelande här…"
                   rows={5}
                   maxLength={200}
+                  className="resize-none"
                   {...field}
                 />
               </FormControl>
@@ -150,7 +151,7 @@ export function ContactForm({ className }: ContactFormProps) {
           )}
         />
 
-        <Button type="submit" className="w-full h-11">
+        <Button variant='orange' type="submit" className="w-full h-11">
           Skicka meddelande
         </Button>
       </form>

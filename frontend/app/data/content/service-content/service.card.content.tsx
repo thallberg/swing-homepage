@@ -13,26 +13,26 @@ export const serviceCardContent: ServiceItem[] = [
     body:
       "Upptäck vackra landskap på hästryggen. Våra guidade turer passar både nybörjare och erfarna ryttare.",
     price: 600,
-    image: "/gallery/picture2.webp",
+    image: "/booking/imageContent.webp",
   },
   {
     title: "Privat Lektion",
     body:
       "Få personlig träning med en erfaren instruktör. Perfekt för både nybörjare och avancerade ryttare.",
     price: 700,
-    image: "/gallery/picture2.webp",
+    image: "/booking/imageContent.webp",
   },
   {
     title: "Övernattning",
     body:
       "Upplev en natt på vår mysiga gård med tillgång till hästskötsel och ridning.",
     price: 1200,
-    image: "/gallery/picture2.webp",
+    image: "/booking/imageContent.webp",
   },
   {
     title: "Lyx Paketet",
     body: "Välj själv din vistelse, från ridning till bostad.",
     price: 1200,
-    image: "/gallery/picture2.webp",
+    image: "/booking/imageContent.webp",
   },
 ];

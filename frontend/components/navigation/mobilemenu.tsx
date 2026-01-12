@@ -36,7 +36,7 @@ function MobileMenu({ links, open, onOpenChange }: MobileMenuProps) {
         onOpenChange={onOpenChange}
       >
         <DrawerTrigger asChild>
-          <Button variant="ghost" size="icon" className="hover:bg-transparent dark:hover:bg-transparent">
+          <Button aria-label="Open menu" variant="ghost" size="icon" className="hover:bg-transparent dark:hover:bg-transparent">
             <Menu className="size-6 text-white" />
           </Button>
         </DrawerTrigger>

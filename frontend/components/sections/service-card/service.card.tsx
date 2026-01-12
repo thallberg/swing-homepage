@@ -23,24 +23,24 @@ function ServiceCard({
   imageClassName,
 }: ServiceCardProps) {
   return (
-    <Card className={cn("overflow-hidden", className)}>
+    <Card className={cn("overflow-hidden h-full cursor-pointer", className)}>
       <Image
         src={image}
         alt={title}
         width={600}
         height={400}
         className={cn(
-          "w-full rounded-sm object-cover lg:rounded-sm",
+          "w-full object-cover",
           imageClassName
         )}
       />
 
-      <CardContent className="space-y-1 text-center">
+      <CardContent className="flex flex-col flex-1 space-y-1 text-center">
         <h2 className="text-xl font-semibold text-amber-900">{title}</h2>
 
         <p className="text-lg text-muted-foreground">{body}</p>
 
-        <p className="text-lg font-bold text-green-700">
+        <p className="text-lg font-bold text-green-700 mt-auto">
           Pris: {price} / person
         </p>
       </CardContent>
@@ -67,7 +67,7 @@ function ServiceCardSection({
 }: ServiceCardSectionProps) {
   return (
     <section className={className}>
-      <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         {items.map((item) => (
           <ServiceCard
             key={item.title}
