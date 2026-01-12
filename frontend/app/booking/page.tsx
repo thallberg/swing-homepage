@@ -33,7 +33,7 @@ export default function Home() {
             <PersonCardSection
               items={personCardContent}
               className="flex-1"
-              cardClassName=""
+              cardClassName="rounded-lg"
             />
           </div>
         </div>
@@ -59,16 +59,16 @@ export default function Home() {
             cardClassName="bg-transparent border-none shadow-none"
           />
         </div>
-        <div className="w-full lg:order-first p-4">
+        <div className="w-full lg:order-first p-4 max-w-[80vw] m-auto">
           <ServiceCardSection
             items={serviceCardContent}
-            className="flex-1 max-w-[90vw] m-auto"
+            className="flex-1 m-auto"
           />
         </div>
-        <div className="w-full min-h-[30vh] flex p-4 bg-blue/10 rounded-md items-center">
+        <div className="w-full min-h-[30vh] flex p-4 bg-blue/10 rounded-lg items-center">
           <InfocardSection
             items={infoBooking}
-            cardClassName="border-0 shadow-none bg-transparent max-w-[80vw] md:max-w-[70vw] lg:max-w-[60vw]"
+            cardClassName="border-0 shadow-none bg-transparent max-w-[80vw] md:max-w-[70vw] lg:max-w-[50vw]"
             className="m-auto"
           />
         </div>

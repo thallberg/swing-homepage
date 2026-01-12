@@ -4,6 +4,9 @@ import Image from "next/image";
 import { Card, CardContent } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
 import type { ServiceItem } from "../../../app/data/content/service-content/service.card.content";
+import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
+import { useState } from "react";
+import { Button } from "@/components/ui/button";
 
 /* ----------------------------------
    Internal ServiceCard
@@ -22,8 +25,9 @@ function ServiceCard({
   className,
   imageClassName,
 }: ServiceCardProps) {
+  const [open, setOpen] = useState(false);
   return (
-    <Card className={cn("overflow-hidden h-full cursor-pointer", className)}>
+    <Card className={cn("overflow-hidden h-full cursor-pointer rounded-lg", className)}>
       <Image
         src={image}
         alt={title}
@@ -36,12 +40,30 @@ function ServiceCard({
       />
 
       <CardContent className="flex flex-col flex-1 space-y-1 text-center">
-        <h2 className="text-xl font-semibold text-amber-900">{title}</h2>
+        <Collapsible open={open} onOpenChange={setOpen}>
+          {/* TEXT – renderas EN gång */}
+          <p
+            className={cn(
+              "text-lg text-muted-foreground transition-all",
+              !open && "line-clamp-2"
+            )}
+          >
+            {body}
+          </p>
 
-        <p className="text-lg text-muted-foreground">{body}</p>
+          {/* TRIGGER – alltid efter text */}
+          <CollapsibleTrigger asChild>
+            <Button variant="link" size="sm" className="text-amber-900 hover:underline">
+              {open ? "Minimera" : "Läs mer"}
+            </Button>
+          </CollapsibleTrigger>
+
+          {/* Krävs av Radix men innehåller inget duplicerat */}
+          <CollapsibleContent />
+        </Collapsible>
 
         <p className="text-lg font-bold text-green-700 mt-auto">
-          Pris: {price} / person
+          Pris: {price} Kr / person
         </p>
       </CardContent>
     </Card>
@@ -67,7 +89,7 @@ function ServiceCardSection({
 }: ServiceCardSectionProps) {
   return (
     <section className={className}>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {items.map((item) => (
           <ServiceCard
             key={item.title}

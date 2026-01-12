@@ -17,7 +17,7 @@ function CalendarCard({ date, onSelect }: CalendarCardProps) {
           selected={date}
           onSelect={onSelect}
           weekStartsOn={1}
-          className="rounded-sm border w-2/3 shadow-none! border-none p-4"
+          className="rounded-lg border w-2/3 shadow-none! border-none p-4"
         />
       </CardContent>
     </Card>

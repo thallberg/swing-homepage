@@ -36,7 +36,7 @@ function DayEventsPanel({ date, events }: DayEventsPanelProps) {
   });
 
   return (
-    <Card className="w-full">
+    <Card className="w-full rounded-lg">
       <CardHeader>
         <CardTitle className="text-center">
           {date

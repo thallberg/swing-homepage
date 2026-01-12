@@ -11,10 +11,7 @@ import {
   serviceHome,
 } from "@/app/data/content/infocard-content/card.content";
 import { InfocardSection } from "@/components/sections/info-card/info.card";
-import { Calendar } from "@/components/ui/calendar";
-
 import { useState } from "react";
-import { Card, CardContent } from "@/components/ui/card";
 import { CalendarCard } from "@/components/sections/calendar-card/calendarcard";
 
 export default function Home() {
@@ -66,9 +63,6 @@ export default function Home() {
             </div>
           </div>
         </div>
-
-
-
 
         <div className="w-full flex-col bg-blue/10 p-4 rounded-lg">
           <InfocardSection
