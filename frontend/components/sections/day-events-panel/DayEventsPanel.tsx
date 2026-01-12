@@ -1,10 +1,10 @@
 "use client";
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { BookingEvent } from "../../../app/data/content/dayevent-content/event-content";
 import { Separator } from "@/components/ui/separator";
 import { Badge } from "@/components/ui/badge";
 import Link from "next/link";
+import { BookingEvent } from "@/app/data/content/dayevent-content/event-content";
 
 type DayEventsPanelProps = {
   date?: Date;
@@ -56,7 +56,7 @@ function DayEventsPanel({ date, events }: DayEventsPanelProps) {
             {todaysEvents.map((event) => (
               <div key={event.id}>
                 <Link
-                  href={`/events/${event.id}`}
+                  href={`/event/${event.id}`}
                   className="group flex items-center justify-between rounded-sm py-2 hover:bg-blue/5 transition focus:outline-none focus-visible:ring-2 focus-visible:ring-blue"
                 >
                   <p className="font-medium">{event.title}</p>
@@ -83,7 +83,7 @@ function DayEventsPanel({ date, events }: DayEventsPanelProps) {
             {upcomingEvents.map((event) => (
               <div key={event.id}>
                 <Link
-                  href={`/events/${event.id}`}
+                  href={`/event/${event.id}`}
                   className="group flex items-center justify-between rounded-sm py-2 hover:bg-blue/5 transition focus:outline-none focus-visible:ring-2 focus-visible:ring-blue"
                 >
                   <p className="text-sm">

@@ -1,63 +1,65 @@
+type RecurringRule = {
+  idPrefix: string;
+  title: string;
+  weekday: number;
+  time: string;
+};
+
+export const recurringRules: RecurringRule[] = [
+  { idPrefix: "mon-ride", title: "Turridning – Veckotur", weekday: 1, time: "10:00" },
+  { idPrefix: "thu-lesson", title: "Privat lektion – Veckovis", weekday: 4, time: "14:00" },
+];
 
 export type BookingEvent = {
   id: string;
   title: string;
-  description?: string;
-  date: string; // YYYY-MM-DD
-  time?: string;
+  time: string;
+  date: string;
 };
 
-
 export const mockBookings: BookingEvent[] = [
-  // ===== IDAG (ex: 2026-01-03) =====
+ 
   {
     id: "1",
     title: "Turridning – Nybörjare",
     time: "10:00",
-    date: "2026-01-03",
+    date: "2026-02-03",
   },
   {
     id: "2",
     title: "Privat lektion",
     time: "14:00",
-    date: "2026-01-03",
+    date: "2026-12-03",
   },
 
-  // ===== IMORGON =====
-  {
-    id: "3",
-    title: "Turridning – Fortsättning",
-    time: "09:30",
-    date: "2026-01-04",
-  },
-  {
-    id: "4",
-    title: "Barnridning",
-    time: "13:00",
-    date: "2026-01-04",
-  },
-
-  // ===== OM 2 DAGAR =====
-  {
-    id: "5",
-    title: "Islandshäst – Prova på",
-    time: "11:00",
-    date: "2026-01-05",
-  },
-
-  // ===== OM 3 DAGAR =====
-  {
-    id: "6",
-    title: "Långtur i naturen",
-    time: "08:30",
-    date: "2026-01-06",
-  },
-
-  // ===== SKA INTE VISAS (för test) =====
-  {
-    id: "7",
-    title: "Kvällstur – Avancerad",
-    time: "18:00",
-    date: "2026-01-07",
-  },
+  // auto-genererade återkommande events
+  ...generateRecurringBookings(recurringRules, 14),
 ];
+
+
+
+
+export function generateRecurringBookings(rules: RecurringRule[], daysAhead = 30): BookingEvent[] {
+  const events: BookingEvent[] = [];
+  const today = new Date();
+  const formatDate = (d: Date) => d.toLocaleDateString("sv-SE");
+
+  for (let i = 0; i <= daysAhead; i++) {
+    const date = new Date(today);
+    date.setDate(today.getDate() + i);
+
+    rules.forEach(rule => {
+      if (date.getDay() === rule.weekday) {
+        const dateStr = formatDate(date);
+        events.push({
+          id: `${rule.idPrefix}-${dateStr}`,
+          title: rule.title,
+          time: rule.time,
+          date: dateStr,
+        });
+      }
+    });
+  }
+
+  return events;
+}

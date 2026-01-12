@@ -13,6 +13,7 @@ import {
 import { InfocardSection } from "@/components/sections/info-card/info.card";
 import { useState } from "react";
 import { CalendarCard } from "@/components/sections/calendar-card/calendarcard";
+import { getAllEvents } from "@/components/sections/day-events-panel/EventService";
 
 export default function Home() {
   const [date, setDate] = useState<Date | undefined>(new Date());
@@ -59,7 +60,7 @@ export default function Home() {
 
           <div className="flex justify-center">
             <div className="w-full flex">
-              <DayEventsPanel date={date} events={mockBookings} />
+              <DayEventsPanel date={date} events={getAllEvents()} />
             </div>
           </div>
         </div>

@@ -13,7 +13,7 @@ export type ImageCardItem = {
 ========================= */
 
 export const homeImageCard: ImageCardItem = {
-  title: "Du Förtjänar Det bästa Möjliga",
+  title: "Du Förtjänar Det Bästa Möjliga",
   image: horse,
 };
 
@@ -22,6 +22,6 @@ export const homeImageCard: ImageCardItem = {
 ========================= */
 
 export const aboutImageCard: ImageCardItem = {
-  title: "Du Förtjänar Det bästa Möjliga",
+  title: "Du Förtjänar Det Bästa Möjliga",
   image: aboutHorse,
 };
