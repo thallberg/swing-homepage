@@ -28,7 +28,7 @@ function ServiceCard({
   const [open, setOpen] = useState(false);
   
   return (
-    <Card className={cn("overflow-hidden h-full cursor-pointer rounded-lg", className)}>
+    <Card className={cn("overflow-hidden h-full cursor-pointer rounded-lg ", className)}>
       <Image
         src={image}
         alt={title}
