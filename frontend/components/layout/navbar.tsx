@@ -18,8 +18,9 @@ function Navbar() {
   const pathname = usePathname();
   const [scrolled, setScrolled] = React.useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = React.useState(false);
+  const [navMenuActive, setNavMenuActive] = React.useState(false);
 
-  const isSolid = scrolled || mobileMenuOpen;
+  const isSolid = scrolled || mobileMenuOpen || navMenuActive;
 
   React.useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 10);
@@ -44,7 +45,7 @@ function Navbar() {
         </div>
 
         {/* Desktop nav */}
-        <DesktopNav links={navLinks} />
+        <DesktopNav links={navLinks} onMenuActiveChange={setNavMenuActive} />
 
         {/* Mobile */}
         <MobileMenu 

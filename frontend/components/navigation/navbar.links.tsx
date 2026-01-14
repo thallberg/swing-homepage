@@ -2,6 +2,7 @@
 "use client";
 
 import Link from "next/link";
+import { useState, useEffect } from "react";
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -23,6 +24,7 @@ export type NavLink = {
 
 type DesktopNavProps = {
   links: NavLink[];
+  onMenuActiveChange?: (active: boolean) => void;
 };
 
 // Funktion för att konvertera title till slug
@@ -36,15 +38,54 @@ function titleToSlug(title: string): string {
     .replace(/[^a-z0-9-]/g, "");
 }
 
-function DesktopNav({ links }: DesktopNavProps) {
+function DesktopNav({ links, onMenuActiveChange }: DesktopNavProps) {
   const bookingServices = serviceCardContent.map((service) => ({
     title: service.title,
     slug: titleToSlug(service.title),
   }));
 
+  // Spåra när navigation menu är aktiv
+  useEffect(() => {
+    const checkMenuState = () => {
+      const openTrigger = document.querySelector('[data-state="open"]');
+      const isActive = !!openTrigger;
+      onMenuActiveChange?.(isActive);
+    };
+
+    const observer = new MutationObserver(checkMenuState);
+    const menuElement = document.querySelector('[data-slot="navigation-menu"]');
+    
+    if (menuElement) {
+      observer.observe(menuElement, {
+        attributes: true,
+        attributeFilter: ['data-state'],
+        subtree: true,
+        childList: false,
+      });
+    }
+
+    // Kontrollera initialt
+    checkMenuState();
+
+    return () => {
+      observer.disconnect();
+    };
+  }, [onMenuActiveChange]);
+
   return (
     <NavigationMenu className="hidden lg:flex">
-      <NavigationMenuList className="gap-10">
+      <NavigationMenuList 
+        className="gap-10"
+        onMouseEnter={() => onMenuActiveChange?.(true)}
+        onMouseLeave={() => {
+          setTimeout(() => {
+            const openTrigger = document.querySelector('[data-state="open"]');
+            if (!openTrigger) {
+              onMenuActiveChange?.(false);
+            }
+          }, 150);
+        }}
+      >
         {links.map((link) => {
           if (link.href === "/booking" && link.hasSubmenu) {
             return (
@@ -52,7 +93,14 @@ function DesktopNav({ links }: DesktopNavProps) {
                 <NavigationMenuTrigger className="bg-transparent text-white hover:text-amber-200 hover:bg-transparent data-[state=open]:text-amber-200 data-[state=open]:bg-transparent data-[active]:bg-transparent data-[state=open]:underline data-[state=open]:decoration-2 data-[state=open]:underline-offset-4">
                   {link.label}
                 </NavigationMenuTrigger>
-                <NavigationMenuContent>
+                <NavigationMenuContent
+                  onMouseEnter={() => onMenuActiveChange?.(true)}
+                  onMouseLeave={() => {
+                    setTimeout(() => {
+                      onMenuActiveChange?.(false);
+                    }, 150);
+                  }}
+                >
                   <ul className="grid w-[400px] gap-3 p-4 bg-gray-800/99 text-white">
                     <li>
                       <NavigationMenuLink asChild>
@@ -87,7 +135,11 @@ function DesktopNav({ links }: DesktopNavProps) {
             );
           }
           return (
-            <NavigationMenuItem key={link.href}>
+            <NavigationMenuItem 
+              key={link.href}
+              onMouseEnter={() => onMenuActiveChange?.(true)}
+              onMouseLeave={() => onMenuActiveChange?.(false)}
+            >
               <Link href={link.href} legacyBehavior passHref>
                 <NavigationMenuLink
                   className={cn(
