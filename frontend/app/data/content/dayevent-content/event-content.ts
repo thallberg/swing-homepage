@@ -18,7 +18,6 @@ export type BookingEvent = {
 };
 
 export const mockBookings: BookingEvent[] = [
- 
   {
     id: "1",
     title: "Turridning – Nybörjare",
@@ -31,9 +30,6 @@ export const mockBookings: BookingEvent[] = [
     time: "14:00",
     date: "2026-12-03",
   },
-
-  // auto-genererade återkommande events
-  ...generateRecurringBookings(recurringRules, 14),
 ];
 
 
