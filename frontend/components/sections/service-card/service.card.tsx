@@ -26,6 +26,7 @@ function ServiceCard({
   imageClassName,
 }: ServiceCardProps) {
   const [open, setOpen] = useState(false);
+  
   return (
     <Card className={cn("overflow-hidden h-full cursor-pointer rounded-lg", className)}>
       <Image

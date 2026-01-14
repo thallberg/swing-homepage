@@ -1,7 +1,5 @@
 "use client";
 
-import { bookingHero } from "@/app/data/content/hero-content/hero.content";
-import { Hero } from "@/components/layout/hero";
 import { homeImageCard } from "@/app/data/content/imagecard-content/image-content";
 import { ImageCardSection } from "@/components/sections/image-card/image.card";
 import {
@@ -18,7 +16,6 @@ import { serviceCardContent } from "../data/content/service-content/service.card
 export default function Home() {
   return (
     <main className="relative">
-      <Hero item={bookingHero} />
       <div className="max-w-[96vw] m-auto">
         <div className="flex flex-col lg:flex-row items-stretch gap-4 pt-4 pb-4">
           <div className="w-full lg:w-1/2 flex p-4 bg-blue/10 rounded-lg items-center">

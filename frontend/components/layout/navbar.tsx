@@ -8,7 +8,7 @@ import { MobileMenu } from "../navigation/mobilemenu";
 import { DesktopNav } from "../navigation/navbar.links";
 
 const navLinks = [
-  { href: "/booking", label: "Boka" },
+  { href: "/booking", label: "Boka", hasSubmenu: true },
   { href: "/about", label: "Om oss" },
   { href: "/contact", label: "Kontakta" },
   { href: "/gallery", label: "Galleri" },

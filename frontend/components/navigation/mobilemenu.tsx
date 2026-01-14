@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { Menu } from "lucide-react";
+import { Menu, ChevronRight } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
@@ -12,11 +12,20 @@ import {
   DrawerTitle,
   DrawerTrigger,
 } from "@/components/ui/drawer";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 import { usePathname } from "next/navigation";
+import { serviceCardContent } from "@/app/data/content/service-content/service.card.content";
 
 type LinkItem = {
   href: string;
   label: string;
+  hasSubmenu?: boolean;
 };
 
 type MobileMenuProps = {
@@ -25,8 +34,24 @@ type MobileMenuProps = {
   onOpenChange: (open: boolean) => void;
 }
 
+// Funktion för att konvertera title till slug
+function titleToSlug(title: string): string {
+  return title
+    .toLowerCase()
+    .replace(/å/g, "a")
+    .replace(/ä/g, "a")
+    .replace(/ö/g, "o")
+    .replace(/\s+/g, "-")
+    .replace(/[^a-z0-9-]/g, "");
+}
+
 function MobileMenu({ links, open, onOpenChange }: MobileMenuProps) {
   const pathname = usePathname();
+  const bookingServices = serviceCardContent.map((service) => ({
+    title: service.title,
+    slug: titleToSlug(service.title),
+  }));
+
   return (
     <div className="lg:hidden">
       <Drawer
@@ -48,15 +73,49 @@ function MobileMenu({ links, open, onOpenChange }: MobileMenuProps) {
           <nav className="flex flex-col gap-6 items-center">
             {pathname !== "/" && (
               <DrawerClose asChild>
-                <Link href="/">Hem</Link>
+                <Link href="/" className="text-lg">Hem</Link>
               </DrawerClose>
             )}
 
-            {links.map((link) => (
-              <DrawerClose asChild key={link.href}>
-                <Link href={link.href}>{link.label}</Link>
-              </DrawerClose>
-            ))}
+            {links.map((link) => {
+              if (link.href === "/booking" && link.hasSubmenu) {
+                return (
+                  <DropdownMenu key={link.href}>
+                    <DropdownMenuTrigger className="text-lg text-white flex items-center gap-2 outline-none">
+                      {link.label}
+                      <ChevronRight className="h-4 w-4" />
+                    </DropdownMenuTrigger>
+                    <DropdownMenuContent align="end" className="bg-gray-800/99 text-white border-gray-700 w-56">
+                      <DropdownMenuItem asChild>
+                        <DrawerClose asChild>
+                          <Link href="/booking" className="cursor-pointer w-full">
+                            Alla bokningar
+                          </Link>
+                        </DrawerClose>
+                      </DropdownMenuItem>
+                      <DropdownMenuSeparator className="bg-gray-700" />
+                      {bookingServices.map((service) => (
+                        <DropdownMenuItem key={service.slug} asChild>
+                          <DrawerClose asChild>
+                            <Link
+                              href={`/booking/${service.slug}`}
+                              className="cursor-pointer w-full"
+                            >
+                              {service.title}
+                            </Link>
+                          </DrawerClose>
+                        </DropdownMenuItem>
+                      ))}
+                    </DropdownMenuContent>
+                  </DropdownMenu>
+                );
+              }
+              return (
+                <DrawerClose asChild key={link.href}>
+                  <Link href={link.href} className="text-lg">{link.label}</Link>
+                </DrawerClose>
+              );
+            })}
           </nav>
         </DrawerContent>
       </Drawer>
