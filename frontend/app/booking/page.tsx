@@ -12,10 +12,13 @@ import { personCardContent } from "@/app/data/content/person-content/person.data
 import { PersonCardSection } from "@/components/sections/person-section.tsx/personsection";
 import { ServiceCardSection } from "@/components/sections/service-card/service.card";
 import { serviceCardContent } from "../data/content/service-content/service.card.content";
+import { Hero } from "@/components/layout/hero";
+import { bookingHero } from "../data/content/hero-content/hero.content";
 
 export default function Home() {
   return (
     <main className="relative">
+      <Hero item={bookingHero} />
       <div className="max-w-[96vw] m-auto">
         <div className="flex flex-col lg:flex-row items-stretch gap-4 pt-4 pb-4">
           <div className="w-full lg:w-1/2 flex p-4 bg-blue/10 rounded-lg items-center">
