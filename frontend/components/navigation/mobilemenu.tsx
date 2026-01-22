@@ -110,6 +110,33 @@ function MobileMenu({ links, open, onOpenChange }: MobileMenuProps) {
                   </DropdownMenu>
                 );
               }
+              if (link.href === "/about" && link.hasSubmenu) {
+                return (
+                  <DropdownMenu key={link.href}>
+                    <DropdownMenuTrigger className="text-lg text-white flex items-center gap-2 outline-none">
+                      {link.label}
+                      <ChevronRight className="h-4 w-4" />
+                    </DropdownMenuTrigger>
+                    <DropdownMenuContent align="end" className="bg-gray-800/99 text-white border-gray-700 w-56">
+                      <DropdownMenuItem asChild>
+                        <DrawerClose asChild>
+                          <Link href="/about" className="cursor-pointer w-full">
+                            Företaget
+                          </Link>
+                        </DrawerClose>
+                      </DropdownMenuItem>
+                      <DropdownMenuSeparator className="bg-gray-700" />
+                      <DropdownMenuItem asChild>
+                        <DrawerClose asChild>
+                          <Link href="/about/team" className="cursor-pointer w-full">
+                            Vårt Team
+                          </Link>
+                        </DrawerClose>
+                      </DropdownMenuItem>
+                    </DropdownMenuContent>
+                  </DropdownMenu>
+                );
+              }
               return (
                 <DrawerClose asChild key={link.href}>
                   <Link href={link.href} className="text-lg">{link.label}</Link>
