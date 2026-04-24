@@ -20,6 +20,7 @@ import { Textarea } from "@/components/ui/textarea";
 
 import { InfocardSection } from "../info-card/info.card";
 import { contactSuccessInfo } from "../../../app/data/content/success-content/contact-success.data";
+import { Spinner } from "@/components/ui/spinner";
 
 type ContactFormProps = {
   className?: string;
@@ -52,6 +53,7 @@ type ContactFormValues = z.infer<typeof contactFormSchema>;
 ========================= */
 export function ContactForm({ className }: ContactFormProps) {
   const [submitted, setSubmitted] = React.useState(false);
+  const [loading, setLoading] = React.useState(false)
 
   const form = useForm<ContactFormValues>({
     resolver: zodResolver(contactFormSchema),
@@ -66,8 +68,13 @@ export function ContactForm({ className }: ContactFormProps) {
 
   function onSubmit(values: ContactFormValues) {
     console.log(values);
-    // TODO: API / mail senare
-    setSubmitted(true);
+
+    setLoading(true);
+
+    setTimeout(() => {
+      setLoading(false);
+      setSubmitted(true);
+    }, 1000);
   }
 
   /* =========================
@@ -151,8 +158,20 @@ export function ContactForm({ className }: ContactFormProps) {
           )}
         />
 
-        <Button variant='orange' type="submit" className="w-full h-11">
-          Skicka meddelande
+        <Button
+          variant="orange"
+          type="submit"
+          className="w-full h-11 flex items-center justify-center gap-2"
+          disabled={loading}
+        >
+          {loading ? (
+            <>
+              <Spinner />
+              Skickar...
+            </>
+          ) : (
+            "Skicka meddelande"
+          )}
         </Button>
       </form>
     </Form>
