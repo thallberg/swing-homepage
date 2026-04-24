@@ -33,7 +33,7 @@ function Calendar({
     <DayPicker
       showOutsideDays={showOutsideDays}
       className={cn(
-        "bg-background group/calendar [--cell-size:--spacing(8)] [[data-slot=card-content]_&]:bg-background [[data-slot=popover-content]_&]:bg-background",
+        "bg-background group/calendar [--cell-size:--spacing(4)] md:[--cell-size:--spacing(8)] [[data-slot=card-content]_&]:bg-background [[data-slot=popover-content]_&]:bg-background",
         String.raw`rtl:**:[.rdp-button\_next>svg]:rotate-180`,
         String.raw`rtl:**:[.rdp-button\_previous>svg]:rotate-180`,
         className
@@ -74,7 +74,7 @@ function Calendar({
           defaultClassNames.dropdowns
         ),
         dropdown_root: cn(
-          "relative border border-input shadow-xs has-focus:ring-ring/50 has-focus:ring-[3px] rounded-md",
+          "relative border border-input shadow-none has-focus:ring-ring/50 has-focus:ring-[3px] rounded-md",
           defaultClassNames.dropdown_root
         ),
         dropdown: cn(
@@ -223,7 +223,7 @@ function CalendarDayButton({
         group-data-[focused=true]/day:ring-ring/50 
         dark:hover:text-accent-foreground 
         flex aspect-square size-auto w-full
-        min-w-(--cell-size) flex-col gap-1 
+        min-w-[18px] flex-col gap-1 
         leading-none font-normal 
         group-data-[focused=true]/day:relative 
         group-data-[focused=true]/day:z-10 

@@ -53,7 +53,7 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 gap-4 pt-4 pb-4 lg:grid-cols-2">
+        <div className="grid grid-cols-1 pt-4 pb-4 lg:grid-cols-2">
           <div className="flex justify-center">
             <CalendarCard date={date} onSelect={setDate} />
           </div>
